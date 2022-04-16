@@ -37,6 +37,8 @@ THEN I am presented with empty fields to enter a new note title and the note’s
 
 ## Deployment
 
+Please use this link, https://safe-brushlands-89710.herokuapp.com/, to open the application in your browser.
+
 ## Contributors
 
 ## Testing
