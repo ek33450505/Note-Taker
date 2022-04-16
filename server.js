@@ -1,18 +1,19 @@
 const express = require('express');
 const app = express(); 
 const fs = require('fs');
+const path = require('path');
 
-app.listen(3001, () => {
-    console.log(`API server now on port 3001!`);
-  });
-
-app.get('/', (req, res) => {
-    res.send('Hello World!');
-});
+const PORT = process.env.PORT || 3002;
 
 // GET /notes should return the notes.html file
+app.get('/notes', (req, res) => {
+    res.sendFile(path.join(__dirname + '/public/notes.html'));
+});
 
 // GET * should return the index.html file
+app.get('/', (req, res) => {
+    res.sendFile(path.join(__dirname + '/public/index.html'));
+});
 
 // GET /api/notes should read the db.json file and return all saved notes as JSON
 
@@ -26,3 +27,7 @@ app.get('/', (req, res) => {
     // In order to to delete youll need to read all notes from the db.json file
         // remove the note with the given id
         // rewrite the notes to the db.json file
+
+app.listen(PORT, () => {
+    console.log('API server is now on port ${port}');
+});
