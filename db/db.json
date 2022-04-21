@@ -6,9 +6,14 @@
       "id": "2"
     },
     {
-      "title": "Take a hike",
-      "text": "find a trail and start walking",
-      "id": "3"
+      "title": "Pay Bills",
+      "text": "Pay: Gas, Water, and Trash",
+      "id": "1"
+    },
+    {
+      "title": "Yard Work",
+      "text": "Mow grass and mulch flower beds",
+      "id": "2"
     }
   ]
 }

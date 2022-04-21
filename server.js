@@ -4,7 +4,7 @@ const fs = require('fs');
 // Helper method for generating unique ids
 const uuid = require('./helpers/uuid');
 
-const PORT = process.env.PORT || 3007;
+const PORT = process.env.PORT || 3005;
 
 const app = express();
 
@@ -76,9 +76,18 @@ app.post('/api/notes', (req, res) => {
 
 // BONUS 
 // DELETE /api/notes/:id should recieve a query parmeter containing the id of a note to delete
-    // In order to to delete youll need to read all notes from the db.json file
-        // remove the note with the given id
-        // rewrite the notes to the db.json file
+app.delete('/api/notes/:id', (req, res) => {
+    const id = req.params.id;
+    let note;
+
+    notes.map((element, index) => {
+      if (element.id == id){
+        note = element
+        notes.splice(index, 1)
+        return res.json(note);
+      } 
+    })
+});
 
 app.listen(PORT, () =>
     console.log(`App listening at http://localhost:${PORT} 🚀`)
