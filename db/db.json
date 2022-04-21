@@ -1,14 +1,22 @@
 {
-    "notes": [
-      {
-        "title": "Start MySQL",
-        "text": "mysql -u root -p, then enter password"
-       
-      },
-      {
-        "title": "Remove cached file",
-        "text": "git rm -r --cached <file-name>"
-      
-      }
-    ]
-  }
+  "notes": [
+    {
+      "title": "Start MySQL",
+      "text": "mysql -u root -p, then enter password"
+    },
+    {
+      "title": "Remove cached file",
+      "text": "git rm -r --cached <file-name>"
+    },
+    {
+      "title": "Push to Heroku",
+      "text": "To push to Heroku enter git push heroku <Branch Name>:main",
+      "id": "2"
+    },
+    {
+      "title": "Take a hike",
+      "text": "find a trail and start walking",
+      "id": "3"
+    }
+  ]
+}

@@ -59,15 +59,19 @@ app.get('/api/notes', (req, res) => {
 
 // POST /api/notes should recieve a new note to save on the request body
 app.post('/api/notes', (req, res) => {
-    // set id 
-  req.body.id = notes.length.toString();
+    // set id .toString
+    req.body.id = notes.length.toString(); 
 
-  if (!validateNewNote(req.body)) {
-      res.status(400).send('Please check your note! Not a valid entry!');
-  } else {
-    const note = createNewNote(req.body, notes); 
+    // if any data in req.body is incorrect, send error
+    if (!validateNewNote(req.body)) {
+        res.status(400).send('Your note entry is not vailid! Please enter a vailid response!'); 
+    
+    } else {
+        // add note to json file and animals array in this function 
+        const note = createNewNote(req.body, notes); 
+
         res.json(note);
-         }
+    }
 });
 
 // BONUS 
