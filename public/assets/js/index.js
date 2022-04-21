@@ -1,16 +1,16 @@
-let $noteTitle = $(".note-title"); $noteText = $(".note-textarea");
-let $saveNoteBtn = $(".save-note");
-let $newNoteBtn = $(".new-note");
-let $noteList = $(".list-container .list-group");
+let noteTitle;
+let noteText;
+let saveNoteBtn;
+let newNoteBtn;
+let noteList;
 
 if (window.location.pathname === '/notes') {
-  $noteTitle = document.querySelector('.note-title');
-  $noteText = document.querySelector('.note-textarea');
-  $saveNoteBtn = document.querySelector('.save-note');
-  $newNoteBtn = document.querySelector('.new-note');
-  $noteList = document.querySelectorAll('.list-container .list-group');
+  noteTitle = document.querySelector('.note-title');
+  noteText = document.querySelector('.note-textarea');
+  saveNoteBtn = document.querySelector('.save-note');
+  newNoteBtn = document.querySelector('.new-note');
+  noteList = document.querySelectorAll('.list-container .list-group');
 }
-
 // Show an element
 const show = (elem) => {
   elem.style.display = 'inline';
