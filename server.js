@@ -8,13 +8,29 @@ const PORT = process.env.PORT || 3001;
 
 const app = express();
 
-app.use(express.json());
+// parse incoming string or array data
 app.use(express.urlencoded({ extended: true }));
-
+// parse incoming JSON data
+app.use(express.json());
+//middleware for public files
 app.use(express.static('public'));
 
 // request data from db.json
 const { notes } = require('./db/db.json');
+
+// function for handling data from the req.body user input and adding it to db.json
+function createNewNote (body, notesArray) {
+    notesArray.push(body); 
+
+    // Write user input into the notes array 
+    fs.writeFileSync(
+        path.join(__dirname, './db/db.json'),
+        JSON.stringify({ body : notesArray }, null, 2)
+    );
+
+    //return finished code to post route for response
+    return body;
+};
 
 // GET /notes should return the notes.html file
 app.get('/notes', (req, res) => {
@@ -28,6 +44,10 @@ app.get('/', (req, res) => {
 
 // GET /api/notes should read the db.json file and return all saved notes as JSON
 app.get('/api/notes', (req, res) => {
+    let results = notes;
+    if(req.query) {
+        results = filterByQuery(req.query, results);
+    }
     res.json(notes);
 });
 
@@ -35,6 +55,13 @@ app.get('/api/notes', (req, res) => {
     // add it to the db.json file
     // return the new note to the client
     // give each note a unique id when its saved - find npm packages
+
+app.post('/api/notes', (req, res) => {
+  // set id based on what the next index of the array will be
+  req.body.id = notes.length.toString();
+
+  res.json(req.body);
+});
 
 // BONUS 
 // DELETE /api/notes/:id should recieve a query parmeter containing the id of a note to delete

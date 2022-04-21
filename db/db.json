@@ -1,13 +1,13 @@
 {
     "notes": [
       {
-        "title": "TEST 1",
-        "text": "TEST 1!"
+        "title": "Start MySQL",
+        "text": "mysql -u root -p, then enter password"
        
       },
       {
-        "title": "TEST 2",
-        "text": "TEST 2! "
+        "title": "Remove cached file",
+        "text": "git rm -r --cached <file-name>"
       
       }
     ]
