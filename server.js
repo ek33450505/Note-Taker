@@ -4,7 +4,7 @@ const fs = require('fs');
 // Helper method for generating unique ids
 const uuid = require('./helpers/uuid');
 
-const PORT = process.env.PORT || 3001;
+const PORT = process.env.PORT || 3007;
 
 const app = express();
 
@@ -20,47 +20,54 @@ const { notes } = require('./db/db.json');
 
 // function for handling data from the req.body user input and adding it to db.json
 function createNewNote (body, notesArray) {
-    notesArray.push(body); 
+    const note = body;
+    notesArray.push(note); 
 
     // Write user input into the notes array 
     fs.writeFileSync(
         path.join(__dirname, './db/db.json'),
-        JSON.stringify({ body : notesArray }, null, 2)
+        JSON.stringify({ notes : notesArray }, null, 2)
     );
+    return note;
+};
 
-    //return finished code to post route for response
-    return body;
+// validate user data before adding to db.json
+function validateNewNote (note) {
+    if (!note.title || typeof note.title !== 'string') {
+        return false;
+    }
+    if (!note.title || typeof note.text !== "string") {
+        return false;
+    }
+    return true;
 };
 
 // GET /notes should return the notes.html file
 app.get('/notes', (req, res) => {
-    res.sendFile(path.join(__dirname + '/public/notes.html'));
+    res.sendFile(path.join(__dirname, '/public/notes.html'));
 });
 
 // GET * should return the index.html file
 app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname + '/public/index.html'));
+    res.sendFile(path.join(__dirname, '/public/index.html'));
 });
 
 // GET /api/notes should read the db.json file and return all saved notes as JSON
 app.get('/api/notes', (req, res) => {
-    let results = notes;
-    if(req.query) {
-        results = filterByQuery(req.query, results);
-    }
     res.json(notes);
 });
 
 // POST /api/notes should recieve a new note to save on the request body
-    // add it to the db.json file
-    // return the new note to the client
-    // give each note a unique id when its saved - find npm packages
-
 app.post('/api/notes', (req, res) => {
-  // set id based on what the next index of the array will be
+    // set id 
   req.body.id = notes.length.toString();
 
-  res.json(req.body);
+  if (!validateNewNote(req.body)) {
+      res.status(400).send('Please check your note! Not a valid entry!');
+  } else {
+    const note = createNewNote(req.body, notes); 
+        res.json(note);
+         }
 });
 
 // BONUS 
