@@ -33,15 +33,25 @@ THEN I am presented with empty fields to enter a new note title and the note’s
 
 ## Installation
 
+To use this application, please use git clone and save to your local directory. After opening the application in your code editor, be sure to enter npm install in order to download required packages.
+
 ## Visualization
+
+![Screenshot 2022-04-21 171003](https://user-images.githubusercontent.com/97137083/164552960-5c8e3ed7-7d9e-44ea-89d0-3545bc9ee2fb.png)
+
+![Screenshot 2022-04-21 171031](https://user-images.githubusercontent.com/97137083/164552998-60e2fabd-d011-4000-869f-96dec5834ad0.png)
 
 ## Deployment
 
 Please use this link, https://safe-brushlands-89710.herokuapp.com/, to open the application in your browser.
 
+Please use this link, https://github.com/ek33450505/Note-Taker, to open the associated GitHub Repository.
+
 ## Contributors
 
 ## Testing
+
+Test this application here https://safe-brushlands-89710.herokuapp.com/! 
 
 ## Contact
 
