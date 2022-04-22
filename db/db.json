@@ -1,6 +1,19 @@
-[
+{
+  "notes": [
     {
-        "title":"Test Title",
-        "text":"Test text"
+      "title": "Push to Heroku",
+      "text": "To push to Heroku enter git push heroku <Branch Name>:main",
+      "id": "2"
+    },
+    {
+      "title": "Pay Bills",
+      "text": "Pay: Gas, Water, and Trash",
+      "id": "1"
+    },
+    {
+      "title": "Yard Work",
+      "text": "Mow grass and mulch flower beds",
+      "id": "2"
     }
-]
+  ]
+}
