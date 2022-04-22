@@ -49,6 +49,8 @@ Please use this link, https://github.com/ek33450505/Note-Taker, to open the asso
 
 ## Contributors
 
+GitHub user Xandromous provided the starter code: https://github.com/coding-boot-camp/miniature-eureka
+
 ## Testing
 
 Test this application here https://safe-brushlands-89710.herokuapp.com/! 
